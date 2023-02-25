@@ -33,6 +33,7 @@ df.withColumnRenamed('Age','age').show()
 df.createOrReplaceTempView('People') # Create a table from df
 
 results=spark.sql("Select * from People where age>20")
+results=spark.sql("Select * from People where CTC=(SELECT max(CTC) from People)")
 results.show()
 
 
